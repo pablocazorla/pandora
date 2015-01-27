@@ -11,6 +11,9 @@ h1{font-size: 24px;line-height: 1.4em;margin-bottom: 15px}
 	min-height: 400px;
 	border:solid 1px #CCC;
 }
+.wide{
+	max-width: 100%;
+}
 .presentation{
 	background-color: #EEE;
 	border: solid 1px #DDD;
@@ -38,6 +41,17 @@ h1{font-size: 24px;line-height: 1.4em;margin-bottom: 15px}
 	opacity: 0;
 }
 
-.softlightx{
-	background-color: red;
+
+.col-midd{
+	border: solid 1px #F00;
+	height:360px;
+	float: left;
+	width:50%;
 }
+
+.col-midd.g1{background-color: #F00}
+.col-midd.g2{background-color: #0D0}
+.col-midd.g3{background-color: #090}
+.col-midd.g4{background-color: #009}
+.col-midd.g5{background-color: #099}
+.col-midd.g6{background-color: #990}

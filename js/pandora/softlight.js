@@ -2,41 +2,27 @@
 ;
 (function() {
 
-	var list = [],
-		remainingList = [],
-		length = 0,
-		defaultAnimation = {
+	PANDORA.SOFTLIGHT = {
+		delay: 200,
+		defaults: {
 			x: 0,
-			y: 100,
-			from: 0,
-			duration: 500
-		},
-		classSelection = 'softlightx',
+			y: 120,
+			scale: 1,
+			rotate: 0,
+			from: 100,
+			duration: 400,
+			delay: 0
+		}
+	};
 
-
-
-		cssfix = (function() {
-			var style = document.createElement('dummy').style,
-				prefixes = 'Webkit Moz O ms Khtml'.split(' '),
-				memory = {};
-			return function(prop) {
-				if (typeof memory[prop] === "undefined") {
-					var ucProp = prop.charAt(0).toUpperCase() + prop.substr(1),
-						props = (prop + ' ' + prefixes.join(ucProp + ' ') + ucProp).split(' ');
-					memory[prop] = null;
-					for (var i in props) {
-						if (style[props[i]] !== undefined) {
-							memory[prop] = props[i];
-							break;
-						}
-					}
-				}
-				return memory[prop];
-			};
-
-		})(),
-
-
+	var list = [],
+		length = 0,
+		classSelection = 'softlight',
+		initialized = false,
+		delay = 0,
+		
+		transformFix = PANDORA.cssfix('transform'),
+		transitionFix = PANDORA.cssfix('transition'),
 		getPosition = function(elem) {
 			var winHeight = PANDORA.$window.height(),
 				elemRect = elem.getBoundingClientRect();
@@ -50,42 +36,89 @@
 			}
 			return visible;
 		},
-
 		setInitialPosition = function(elem, data) {
-			var objElem = $.extend(defaultAnimation, PANDORA.parseData(data));
+			var objElem = $.extend({
+				x: PANDORA.SOFTLIGHT.defaults.x,
+				y: PANDORA.SOFTLIGHT.defaults.y,
+				scale: PANDORA.SOFTLIGHT.defaults.scale,
+				rotate: PANDORA.SOFTLIGHT.defaults.rotate,
+				from: PANDORA.SOFTLIGHT.defaults.from,
+				duration: PANDORA.SOFTLIGHT.defaults.duration,
+				delay: PANDORA.SOFTLIGHT.defaults.delay
+			}, PANDORA.parseData(data));
 
 			// Add elem
 			objElem.elem = elem;
 
-			//correction of position
-			objElem.from -= objElem.y;
-
 			var isVisible = test(objElem);
-			if (isVisible) {
-				$(elem).removeClass(classSelection);
-			} else {
-				////
+			if (!isVisible) {
+				//correction of position
+				objElem.from -= objElem.y;
+				//
+				var transformStyle = '';
+				if (objElem.x !== 0) {
+					transformStyle += 'translateX(' + objElem.x + 'px)';
+				}
+				if (objElem.y !== 0) {
+					transformStyle += ' translateY(' + objElem.y + 'px)';
+				}
+				if (objElem.scale !== 1) {
+					transformStyle += ' scale(' + objElem.scale + ')';
+				}
+				if (objElem.rotate !== 0) {
+					transformStyle += ' rotate(' + objElem.rotate + 'deg)';
+				}
+				objElem.elem.style.opacity = '0';
+				objElem.elem.style[transformFix] = transformStyle;
+				objElem.elem.style[transitionFix] = 'opacity ' + objElem.duration + 'ms ease-out ' + objElem.delay + 'ms, ' + transformFix + ' ' + objElem.duration + 'ms ease-out ' + objElem.delay + 'ms';
 				list.push(objElem);
+				length++;
+			}
+			$(elem).removeClass(classSelection);
+		},
+		show = function(ob) {
+			setTimeout(function() {
+				ob.elem.style.opacity = '1';
+				ob.elem.style[transformFix] = 'none';
+				setTimeout(function() {
+					ob.elem.style[transitionFix] = 'none';
+				}, ob.duration + ob.delay + 50);
+			}, delay);
+		},
+		onScroll = function() {
+			if (length > 0) {
+				var remainingList = [],
+					i;
+				delay = 0;
+				for (i = 0; i < length; i++) {
+					var objElem = list[i],
+						isVisible = test(objElem);
+					if (isVisible) {
+						show(objElem);
+						delay += PANDORA.SOFTLIGHT.delay;
+					} else {
+						remainingList.push(objElem);
+					}
+				}
+				list = remainingList;
+				length = list.length;
 			}
 		},
-
-
-
 		select = function(context) {
-			var ctx = (typeof context !== 'undefined') ? context + ' ' : '';
+			if (PANDORA.opened) {
+				var ctx = (typeof context !== 'undefined') ? context + ' ' : '';
 
-			$(ctx + '.' + classSelection).each(function() {
-				var data = $(this).attr('data-softlight');
-				setInitialPosition(this, data);
-			});
+				$(ctx + '.' + classSelection).each(function() {
+					var data = $(this).attr('data-softlight');
+					setInitialPosition(this, data);
+				});
 
-
-
+				if (!initialized) {
+					PANDORA.$window.scroll(onScroll).resize(onScroll);
+					initialized = true;
+				}
+			}
 		};
 
-
-
-	PANDORA.SOFTLIGHT = {
-		select: select
-	};
+	PANDORA.SOFTLIGHT.select = select;
 })();

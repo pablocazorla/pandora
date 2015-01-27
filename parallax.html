@@ -1,0 +1,40 @@
+<!doctype HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Parallax</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		
+		<!-- CSS -->
+		<link type="text/css" rel="stylesheet" href="css/reset.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="page wide clearfix">
+			<h1>Parallax</h1>
+			<div class="presentation">Presentation</div>
+			<div class="clearfix">
+				<div class="col-midd g1 parallax" data-parallax="factor:-19,toTop:0">1</div>
+				<div class="col-midd g2 parallax" data-parallax="factor:100,toTop:0">2</div>
+				<div class="col-midd g3 parallax" data-parallax="factor:90">3</div>
+				<div class="col-midd g4 parallax">4</div>
+				<div class="col-midd g5 parallax" data-parallax="factor:-30,toBottom:0">5</div>
+				<div class="col-midd g6 parallax" data-parallax="factor:-40,toBottom:0">6</div>
+			</div>
+			<div class="presentation">Footer</div>
+		</div>
+		<script src="js/libs/jquery-1.9.1.min.js"></script>
+		<script src="js/pandora/box.js"></script>
+		<script src="js/pandora/parallax.js"></script>
+		<script>
+			// App
+			PANDORA.open(function($){
+				PANDORA.PARALLAX.select();
+			});
+		</script>
+	</body>
+</html>

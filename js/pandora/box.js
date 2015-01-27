@@ -36,6 +36,23 @@ var PANDORA = {
 			}
 		}
 		return obj;
-	}
+	},
+	cssfix: (function() {
+		var style = document.createElement('dummy').style,
+			prefixes = 'Webkit Moz O ms Khtml'.split(' ');
+		return function(prop) {
+
+			var ucProp = prop.charAt(0).toUpperCase() + prop.substr(1),
+				props = (prop + ' ' + prefixes.join(ucProp + ' ') + ucProp).split(' '),
+				result = null;
+			for (var i in props) {
+				if (style[props[i]] !== undefined) {
+					result = props[i];
+					break;
+				}
+			}
+			return result;
+		};
+	})()
 };
 PANDORA.init = PANDORA.open;
