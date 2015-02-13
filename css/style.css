@@ -74,3 +74,15 @@ h1{font-size: 24px;line-height: 1.4em;margin-bottom: 15px}
 .col-midd.g4{background-color: #009}
 .col-midd.g5{background-color: #099}
 .col-midd.g6{background-color: #990}
+
+/* loader */
+.main-container-loader{
+	min-height: 360px;border: solid 1px #CCC;background-color: #DDD;margin:20px 0;padding: 20px
+}
+.wrap-loader{
+	position:relative;
+}
+.dimmer-loader{
+	position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: #333;
+	line-height: 200px;color: #FFF;text-align: center;display: none;
+}

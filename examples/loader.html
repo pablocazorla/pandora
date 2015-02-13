@@ -20,16 +20,33 @@
 		</style>
 		<div class="page clearfix softlight-page">
 			<h1>Pandora Loader</h1>
-			<p><a href="http://localhost:82/pandora/examples/load1.html">Load 1</a> | <a href="http://localhost:82/pandora/examples/load2.html">Load 2</a> | <a href="http://localhost:82/pandora/examples/load3.html">Load 3</a></p>
-			<div id="main-container">tg</div>
+			<p><a href="http://localhost/pandora/examples/load1.html">Load 1</a> | <a href="http://localhost/pandora/examples/load2.html">Load 2</a> | <a href="http://localhost/pandora/examples/load3.html">Load 3</a></p>
+			<div class="wrap-loader">
+				<div id="main-container" class="main-container-loader"></div>
+				<div class="dimmer-loader">Loading</div>
+			</div>			
 		</div>
 		<script src="../js/vendors/jquery-1.9.1.min.js"></script>
 		<script src="../js/pandora/box.js"></script>
 		<script src="../js/pandora/loader.js"></script>
 		<script>
 			// App
-			PANDORA.open(function($){					
-				PANDORA.LOADER.setLinks();
+			PANDORA.open(function($){
+				var $dimm = $('.dimmer-loader'),
+					duration = 500;
+
+				PANDORA.LOADER.init().config({
+					getTitle: function(){
+						return $('.load-content').attr('title');
+					},
+					before: function(){
+						$dimm.fadeIn(duration);
+					},
+					beforeTime: duration,
+					after: function(){
+						$dimm.fadeOut(duration);
+					}
+				}).setLinks();
 			});
 		</script>
 	</body>

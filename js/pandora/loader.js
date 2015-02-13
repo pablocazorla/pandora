@@ -1,7 +1,6 @@
 // PANDORA LOADER
 (function() {
 	'use strict';
-
 	PANDORA.LOADER = {
 		defaults: {
 			before: null,
@@ -22,15 +21,15 @@
 
 	var hostUrl = window.location.host,
 		currentUrl = window.location.href,
+		initialUrl = window.location.href,
 		isAsyncUrl = function(url) {
 			return (url.indexOf(hostUrl) !== -1)
 		},
-		enablePush = function() {
-			return (typeof history !== 'undefined' && typeof history.pushState !== 'undefined' && !PANDORA.BROWSER.msie);
-		};
+		enablePush = false;
 
-	PANDORA.LOADER.load = function(url) {
-		var timer = null,
+	PANDORA.LOADER.load = function(url, back) {
+		var isBack = back || false,
+			timer = null,
 			changed = false,
 			hash = null,
 			nexus = (url.indexOf('?') === -1) ? '?' : '&',
@@ -43,13 +42,16 @@
 				var title = document.title;
 				if (typeof PANDORA.LOADER.defaults.getTitle === 'function') {
 					title = PANDORA.LOADER.defaults.getTitle();
+					document.title = title;
 				}
-
-
 				if (hash !== null) {
 					url += '#' + hash;
 				}
-				history.pushState(null, title, url);
+				if (!isBack) {
+					history.pushState({
+						path: url
+					}, title, url);
+				}
 				currentUrl = url;
 
 				// After
@@ -65,7 +67,7 @@
 				PANDORA.LOADER.defaults.before();
 			}
 
-			if (enablePush() && isAsyncUrl(url)) {
+			if (enablePush && isAsyncUrl(url)) {
 				if (url.indexOf('#') !== -1) {
 					var arr = url.split('#');
 					url = arr[0];
@@ -93,13 +95,29 @@
 	};
 	PANDORA.LOADER.setLinks = function(context) {
 		var ctx = PANDORA.getContext(context);
-		if (enablePush()) {
+		if (enablePush) {
 			$(ctx + 'a:not(.' + PANDORA.LOADER.defaults.exceptionClass + ')').click(function(e) {
 				var $this = $(this),
 					url = $this.attr('href');
 				if (isAsyncUrl(url)) {
 					e.preventDefault();
 					PANDORA.LOADER.load(url);
+				}
+			});
+		}
+		return this;
+	};
+	PANDORA.LOADER.init = function() {
+		enablePush = (typeof history !== 'undefined' && typeof history.pushState !== 'undefined' && !PANDORA.BROWSER.msie);
+		if (enablePush) {
+			PANDORA.$window.bind('popstate', function(event) {
+
+				var state = event.originalEvent.state;
+				if (state) {
+					PANDORA.LOADER.load(state.path, true);
+				} else {
+					console.log('Va');
+					window.location.href = initialUrl;	    	
 				}
 			});
 		}
