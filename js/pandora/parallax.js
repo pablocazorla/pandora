@@ -1,11 +1,12 @@
 // PANDORA PARALLAX
-;
 (function() {
+	
 	PANDORA.PARALLAX = {
 		defaults: {
 			factor: 50
 		}
 	};
+	
 
 	var list = [],
 		initialized = false,
