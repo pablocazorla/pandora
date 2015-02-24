@@ -19,18 +19,7 @@ var PANDORA = (function() {
 	BROWSER.android = ua.match(/android/i);
 
 	var parseData = function(data) {
-			var obj = {},
-				arr, len, i, attr, prop, val;
-			if (data !== '' && data !== undefined && data !== null) {
-				arr = data.split(',');
-				len = arr.length;
-				for (i = 0; i < len; i++) {
-					attr = arr[i].split(':');
-					prop = $.trim(attr[0]);
-					val = parseFloat(attr[1]);
-					obj[prop] = val;
-				}
-			}
+		var obj = $.parseJSON($.trim(data.replace(/\'/g, '"')));
 			return obj;
 		},
 		cssfix = (function() {
@@ -54,6 +43,11 @@ var PANDORA = (function() {
 			var ctx = context || '',
 				nexus = (ctx === '') ? '' : ' ';
 			return ctx + nexus;
+		},
+		store = function(selection, name) {
+			var n = name || selection;
+			PANDORA[n] = $(selection);
+			return PANDORA[n];
 		};
 
 	return {
@@ -90,6 +84,7 @@ var PANDORA = (function() {
 		parseData: parseData,
 		cssfix: cssfix,
 		getContext: getContext,
+		store: store,
 		empty: function() {}
 	}
 })();
