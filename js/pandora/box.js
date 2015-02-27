@@ -19,7 +19,7 @@ var PANDORA = (function() {
 	BROWSER.android = ua.match(/android/i);
 
 	var parseData = function(data) {
-		var obj = $.parseJSON($.trim(data.replace(/\'/g, '"')));
+			var obj = $.parseJSON($.trim(data.replace(/\'/g, '"')));
 			return obj;
 		},
 		cssfix = (function() {
@@ -48,6 +48,11 @@ var PANDORA = (function() {
 			var n = name || selection;
 			PANDORA[n] = $(selection);
 			return PANDORA[n];
+		},
+		log = function(str) {
+			try {
+				console.log(str);
+			} catch (e) {};
 		};
 
 	return {
@@ -85,6 +90,7 @@ var PANDORA = (function() {
 		cssfix: cssfix,
 		getContext: getContext,
 		store: store,
+		log: log,
 		empty: function() {}
 	}
 })();
