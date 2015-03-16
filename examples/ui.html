@@ -18,47 +18,118 @@
 	<body>
 		<div class="page clearfix ui-page">
 			<h1>UI</h1>
-			<hr>
+			<hr>			
 			<h2>Inputs</h2>
-			<h3>HTML4</h3>		
-			<p>
-				<label>text</label>
-				<input type="text" value="" placeholder="text"/>
-			</p>
-			<p>
-				<label>password</label>
-				<input type="password" value="" placeholder="password"/>
-			</p>
-			<p>
-				<input type="submit" value="submit"/>
-			</p>
+			<h3>HTML4</h3>
+			<div class="row">
+				<div class="col-6">	
+					<p>
+						<label>text</label>
+						<input type="text" value="" placeholder="text"/>
+					</p>
+					<p>
+						<label>password</label>
+						<input type="password" value="" placeholder="password"/>
+					</p>
+					<p>
+						<input type="submit" value="submit"/><input type="button" value="button"/>
+					</p>
+					<p>
+						<label>textarea</label>
+						<textarea placeholder="textarea"></textarea>
+					</p>
+				</div>
+				<div class="col-6">
+					<div class="row">
+						<div class="col-6">	
+							<p>
+								<strong>radio</strong><br>
+								<input type="radio" name="rad1" id="rad1-1" value="1" checked /><label for="rad1-1">Option 1</label><br>
+								<input type="radio" name="rad1" id="rad1-2" value="2" /><label for="rad1-2">Option 2</label><br>
+								<input type="radio" name="rad1" id="rad1-3" value="3" /><label for="rad1-3">Option 3</label><br>
+								<input type="radio" name="rad1" id="rad1-4" value="4" /><label for="rad1-4">Option 4</label>
+							</p>
+						</div>
+						<div class="col-6">
+							<p>
+								<strong>checkbox</strong><br>
+								<input type="checkbox" name="check1" id="check1-1" value="1" checked /><label for="check1-1">Option 1 - 1</label><br>
+								<input type="checkbox" name="check1" id="check1-2" value="2" /><label for="check1-2">Option 1 - 2</label><br>
+								<input type="checkbox" name="check2" id="check2-1" value="3" /><label for="check2-1">Option 2</label><br>
+								<input type="checkbox" name="check3" id="check3-1" value="4" /><label for="check3-1">Option 3</label>
+							</p>					
+						</div>
+					</div>
+					<p>
+						<select>
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+							<option value="3">Option 3</option>
+							<option value="4">Option 4</option>
+							<option value="5">Option 5</option>
+							<option value="6">Option 6</option>
+						</select>
 
-			<p>
-				<strong>radio</strong><br>
-				<input type="radio" name="rad1" id="rad1-1" value="1" checked /><label for="rad1-1">Option 1</label><br>
-				<input type="radio" name="rad1" id="rad1-2" value="2" /><label for="rad1-2">Option 2</label><br>
-				<input type="radio" name="rad1" id="rad1-3" value="3" /><label for="rad1-3">Option 3</label><br>
-				<input type="radio" name="rad1" id="rad1-4" value="4" /><label for="rad1-4">Option 4</label>
-			</p>
-
-			<p>
-				<strong>checkbox</strong><br>
-				<input type="checkbox" name="check1" id="check1-1" value="1" checked /><label for="check1-1">Option 1 - 1</label><br>
-				<input type="checkbox" name="check1" id="check1-2" value="2" /><label for="check1-2">Option 1 - 2</label><br>
-				<input type="checkbox" name="check2" id="check2-1" value="3" /><label for="check2-1">Option 2</label><br>
-				<input type="checkbox" name="check3" id="check3-1" value="4" /><label for="check3-1">Option 3</label>
-			</p>
-			<p>
-				<input type="button" value="button"/>
-			</p>
+					</p>
+				</div>
+				
+			</div>
 			<hr>
 			<h3>HTML5</h3>
-			<p>
-				<input type="number" name="quantity" min="1" max="5" value="2" step="1">
-
-			</p>
-
-
+			<div class="row">
+				<div class="col-6">
+					<p>
+						<label>number</label>
+						<input type="number" name="quantity" min="1" max="5" value="2" step="1">
+					</p>
+					<p>
+						<label>date</label>
+						<input type="date" name="bday" min="2000-01-02" min="2010-01-02" placeholder="dd/mm/aaaa">
+					</p>
+					<p>
+						<label>color</label>
+		<input type="color" name="favcolor" value="#ff0000">
+					</p>
+					<p>
+						<label>range</label>
+						<input type="range" name="points" min="0" max="10" step="1" value="4">
+					</p>
+					<p>
+						<label>month</label>
+						<input type="month" name="bday" min="2000-01-02" min="2010-01-02" placeholder="----- de ----">
+					</p>
+					<p>
+						<label>week</label>
+						<input type="week" name="bday" min="2000-01-02" min="2010-01-02" placeholder="Semana -- de ----">
+					</p>
+					<p>
+						<label>time</label>
+						<input type="time" name="bday" min="2000-01-02" min="2010-01-02" placeholder="--:--">
+					</p>
+				</div>
+				<div class="col-6">
+					<p>
+						<label>datetime-local</label>
+						<input type="datetime-local" name="bday" min="2000-01-02" min="2010-01-02" placeholder="--:--">
+					</p>
+					<p>
+						<label>email</label>
+						<input type="email" name="bday" placeholder="---@-----.---">
+					</p>
+					<p>
+						<label>search</label>
+						<input type="search" name="bday" placeholder="Search">
+					</p>
+					<p>
+						<label>tel</label>
+						<input type="tel" name="bday" placeholder="000-0000-0000">
+					</p>
+					<p>
+						<label>url</label>
+						<input type="url" name="bday" placeholder="http://">
+					</p>
+				</div>
+			</div>
 
 
 
@@ -73,8 +144,7 @@
 		<script>
 			// App
 			PANDORA.open(function($){
-				
-						
+				PANDORA.UI.select();						
 			});
 		</script>
 	</body>
