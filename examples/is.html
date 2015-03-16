@@ -23,18 +23,20 @@
 			// App
 			PANDORA.open(function($){
 				
+				var v= 44,
+					vIs = PANDORA.is.number(v),
+					vIsNot = PANDORA.is.not.number(v),
+					vIsAny = PANDORA.is.any.number(v,12,2,68,36);
+					vIsAll = PANDORA.is.all.number([v,12,2,68,36]);
+
+				var str = 'Is: '+ vIs;
+
+				str += '<br>Is not: '+vIsNot;
+				str += '<br>Is any: '+vIsAny;
+				str += '<br>Is all: '+vIsAll;
 
 
-
-
-
-
-
-
-
-
-
-				
+				$('h1').html(str);				
 			});
 		</script>
 	</body>
