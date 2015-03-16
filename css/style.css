@@ -8,8 +8,16 @@
 
 /* Basic *************************************************/
 
-body{background-color: #DDD;color:#333;font: 14px/1.3em sans-serif;padding:0 20px;}
-h1{font-size: 24px;line-height: 1.4em;margin-bottom: 15px}
+body{padding:0 20px;}
+
+
+
+hr{
+	border:none;
+	height: 1px;
+	margin: 5px 0 30px;
+	background-color: #DDD;
+}
 
 /* Common *************************************************/
 .page{

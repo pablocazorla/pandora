@@ -1,0 +1,81 @@
+<!doctype HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>UI</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		
+		<!-- CSS -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto' rel='stylesheet' type='text/css'>
+
+		<link type="text/css" rel="stylesheet" href="../css/style.css">
+		<link type="text/css" rel="stylesheet/less" href="../css/ui.less">
+	</head>
+	<body>
+		<div class="page clearfix ui-page">
+			<h1>UI</h1>
+			<hr>
+			<h2>Inputs</h2>
+			<h3>HTML4</h3>		
+			<p>
+				<label>text</label>
+				<input type="text" value="" placeholder="text"/>
+			</p>
+			<p>
+				<label>password</label>
+				<input type="password" value="" placeholder="password"/>
+			</p>
+			<p>
+				<input type="submit" value="submit"/>
+			</p>
+
+			<p>
+				<strong>radio</strong><br>
+				<input type="radio" name="rad1" id="rad1-1" value="1" checked /><label for="rad1-1">Option 1</label><br>
+				<input type="radio" name="rad1" id="rad1-2" value="2" /><label for="rad1-2">Option 2</label><br>
+				<input type="radio" name="rad1" id="rad1-3" value="3" /><label for="rad1-3">Option 3</label><br>
+				<input type="radio" name="rad1" id="rad1-4" value="4" /><label for="rad1-4">Option 4</label>
+			</p>
+
+			<p>
+				<strong>checkbox</strong><br>
+				<input type="checkbox" name="check1" id="check1-1" value="1" checked /><label for="check1-1">Option 1 - 1</label><br>
+				<input type="checkbox" name="check1" id="check1-2" value="2" /><label for="check1-2">Option 1 - 2</label><br>
+				<input type="checkbox" name="check2" id="check2-1" value="3" /><label for="check2-1">Option 2</label><br>
+				<input type="checkbox" name="check3" id="check3-1" value="4" /><label for="check3-1">Option 3</label>
+			</p>
+			<p>
+				<input type="button" value="button"/>
+			</p>
+			<hr>
+			<h3>HTML5</h3>
+			<p>
+				<input type="number" name="quantity" min="1" max="5" value="2" step="1">
+
+			</p>
+
+
+
+
+
+
+
+
+		</div>
+		<script src="../js/vendors/less.min.js"></script>
+		<script src="../js/vendors/jquery-1.9.1.min.js"></script>
+		<script src="../js/pandora/box.js"></script>
+		<script src="../js/pandora/ui/ui.js"></script>
+		<script>
+			// App
+			PANDORA.open(function($){
+				
+						
+			});
+		</script>
+	</body>
+</html>
