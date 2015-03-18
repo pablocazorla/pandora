@@ -220,7 +220,7 @@ $.ajax({
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin et libero diam. Aliquam <code>et nunc vestibulum</code> iaculis nisi sed, accumsan nisi. Curabitur et justo ut massa placerat scelerisque. Fusce at est at sem ullamcorper porta.</p>
 <p>
 Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et ornare enim. Nulla sodales, felis vulputate adipiscing fringilla, est mauris pellentesque metus, eu facilisis quam augue et dui. Integer ornare dignissim mauris, vitae ultricies nisi. Mauris nibh mi, pretium vel justo quis, ornare bibendum metus.</p>
-<iframe src="//www.google.com" width="600" height="450"></iframe>
+<iframe src="loader.html" width="600" height="450"></iframe>
 <p>
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin et libero diam. Aliquam et nunc vestibulum, iaculis nisi sed, accumsan nisi. Curabitur et justo ut massa placerat scelerisque. Fusce at est at sem ullamcorper porta.</p>
 <canvas width="600" height="450"></canvas>
@@ -228,7 +228,30 @@ Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
 Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et ornare enim. Nulla sodales, felis vulputate adipiscing fringilla, est mauris pellentesque metus, eu facilisis quam augue et dui. Integer ornare dignissim mauris, vitae ultricies nisi. Mauris nibh mi, pretium vel justo quis, ornare bibendum metus.</p>
 
 <h2>Modal</h2>
-<p>Show modal <a href="" class="button" id="modal-btn">here</a>.</p>
+<p>Show modal <a href="" class="button" id="modal-btn-show">here</a></p>
+<p>Load modal <a href="" class="button" id="modal-btn-load">here</a></p>
+
+<h2>Buttons</h2>
+<div class="row">
+<div class="col-6">
+	<h3>Colors</h3>
+	<p>Common button <a href="javascript:void(0);" class="button">Button</a></p>
+	<p>Secondary button <a href="javascript:void(0);" class="button secondary">Button</a></p>
+	<p>Alt button <a href="javascript:void(0);" class="button alt">Button</a></p>
+	<p>Warning button <a href="javascript:void(0);" class="button warning">Button</a></p>
+	<p>Danger button <a href="javascript:void(0);" class="button danger">Button</a></p>
+	<p>Info button <a href="javascript:void(0);" class="button info">Button</a></p>
+</div>
+<div class="col-6">
+	<h3>Sizes</h3>
+	<p>Smallest <a href="javascript:void(0);" class="button smallest">Button</a></p>
+	<p>Small <a href="javascript:void(0);" class="button small">Button</a></p>
+	<p>Normal <a href="javascript:void(0);" class="button">Button</a></p>
+	<p>Big or large <a href="javascript:void(0);" class="button big">Button</a></p>
+	<p>Biggest <a href="javascript:void(0);" class="button biggest">Button</a></p>
+</div>
+</div>
+
 
 			<hr>
 			<h2>Form Inputs</h2>
@@ -342,6 +365,41 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 					</p>
 				</div>
 			</div>
+		<hr>
+		<h2>Tabs</h2>
+		<div class="tabs-container">
+			<ul class="tabs">
+				<li><a href="">Option 1</a></li>
+				<li><a href="">Option 2</a></li>
+				<li><a href="">Option 3</a></li>
+			</ul>
+			<div class="tab-content">
+				<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis luctus a augue eget eleifend. Cras dignissim justo sit amet sapien sollicitudin, eget porttitor leo feugiat. Nulla fringilla tincidunt mauris. Vivamus in felis vel turpis tincidunt commodo vitae at felis. Cras tempor vitae eros non venenatis.</p>
+			</div>
+			<div class="tab-content">
+				<p>Nam volutpat rhoncus odio. Integer vestibulum id nibh nec scelerisque. Mauris bibendum id orci nec interdum. Nam in arcu orci. Cras mollis risus magna, vel fermentum risus molestie at. Vivamus mollis congue nisi ut congue. </p>
+			</div>
+			<div class="tab-content">
+				<p>Donec commodo, ligula nec euismod laoreet, libero sem consectetur quam, et pharetra tellus leo at nibh. Morbi pellentesque tempor sem, a suscipit nulla aliquet quis. In at ante sed nisl accumsan imperdiet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In mollis eu ante non lacinia. Suspendisse potenti. </p>
+			</div>
+		</div>
+		<h3>With other classes</h3>
+		<div class="tabs-container woo-container">
+			<ul class="tabs woo-tabs">
+				<li><a href="">Option 1</a></li>
+				<li><a href="">Option 2</a></li>
+				<li><a href="">Option 3</a></li>
+			</ul>
+			<div class="tab-content woo-content">
+				<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis luctus a augue eget eleifend. Cras dignissim justo sit amet sapien sollicitudin, eget porttitor leo feugiat. Nulla fringilla tincidunt mauris. Vivamus in felis vel turpis tincidunt commodo vitae at felis. Cras tempor vitae eros non venenatis.</p>
+			</div>
+			<div class="tab-content woo-content">
+				<p>Nam volutpat rhoncus odio. Integer vestibulum id nibh nec scelerisque. Mauris bibendum id orci nec interdum. Nam in arcu orci. Cras mollis risus magna, vel fermentum risus molestie at. Vivamus mollis congue nisi ut congue. </p>
+			</div>
+			<div class="tab-content woo-content">
+				<p>Donec commodo, ligula nec euismod laoreet, libero sem consectetur quam, et pharetra tellus leo at nibh. Morbi pellentesque tempor sem, a suscipit nulla aliquet quis. In at ante sed nisl accumsan imperdiet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In mollis eu ante non lacinia. Suspendisse potenti. </p>
+			</div>
+		</div>
 
 
 
@@ -354,6 +412,7 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 		<script src="../js/pandora/box.js"></script>
 		<script src="../js/pandora/ui/ui.js"></script>
 		<script src="../js/pandora/ui/ui.modal.js"></script>
+		<script src="../js/pandora/ui/ui.tabs.js"></script>
 		<script>
 			// App
 			PANDORA.open(function($){
@@ -361,14 +420,46 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 
 				var modal = PANDORA.UI.MODAL;
 
+
+				
+
+
 				modal.config({
 					closeOnClickDimmer: true
 				}).setContent('<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin et libero diam. Aliquam <code>et nunc vestibulum</code> iaculis nisi sed, accumsan nisi. Curabitur et justo ut massa placerat scelerisque. Fusce at est at sem ullamcorper porta.</p>');
 
-				$('#modal-btn').click(function(e){
+
+				var $ctrl = $('<div>'),
+					$btCancelar = $('<a href="" class="button secondary">Cancelar</a>').appendTo($ctrl),
+					$btAceptar = $('<a href="" class="button">Aceptar</a>').appendTo($ctrl);
+
+				modal.setControls($ctrl);
+
+				$btCancelar.click(function(e){
+					e.preventDefault();
+					modal.hide();
+				});
+				$btAceptar.click(function(e){
+					e.preventDefault();
+					modal.load('loader.html');
+				});
+
+				$('#modal-btn-show').click(function(e){
 					e.preventDefault();
 					modal.show();
-				});		
+				});
+				$('#modal-btn-load').click(function(e){
+					e.preventDefault();
+					modal.load('loader.html');
+				});
+
+				PANDORA.UI.TABS.config({
+					cssClassContainer: 'woo-container',
+					cssClassTabList: 'woo-tabs',
+					cssClassTabContent: 'woo-content',
+					initial: 2
+				});
+
 			});
 		</script>
 	</body>

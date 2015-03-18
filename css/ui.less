@@ -9,6 +9,7 @@
 @backgroundColor2: #DDD; // Body
 @borderColor: #CCC;
 @invertColor:#FFF;
+@errorColor:#D00;
 @linkColor: @foregroundColor;
 
 // Font Families
@@ -35,6 +36,15 @@
 @inputLineHeight: 1.618em;
 @inputBorderRadius:2px;
 
+// Buttons
+@buttonColor:@foregroundColor;// Like links and inputs
+@buttonSecondaryColor: #BBB;
+@buttonAltColor: #FF9000;
+@buttonWarningColor: #F8B70A;
+@buttonDangerColor: #FF3819;
+@buttonInfoColor: #2897FF;
+@buttonBorderRadius:4px;
+
 // grid system
 @columnMargin:40px;
 
@@ -60,6 +70,13 @@
 @modalBackground:#FFF;
 @modalBorderRadius:4px;
 @modalShadow:0 2px 3px rgba(0,0,0,.2);
+
+// Tabs
+@tabShadowActive:none;
+@tabShadowInactive:inset 0 -2px 1px rgba(0,0,0,.1);
+@tabBorderRadius:4px 4px 0 0;
+@tabHeight:40px;
+@tabPadding: 0 @inputPadding2;
 
 
 
@@ -206,16 +223,6 @@ canvas{
 }
 
 /* Modal */
-
-
-
-
-
-
-
-
-
-
 .dimmer{
 	position: fixed;
 	z-index: 9999;
@@ -226,77 +233,55 @@ canvas{
 	background-color: @dimmerBackground;
 	cursor: crosshair;
 }
-
 .modal{
 	position: fixed;
 	z-index: 10000;
 	top:10px;
 	left:50%;
 	width:800px;
-	min-height: 250px;
+	min-height: 150px;
 	margin-left: -400px;
 	background-color: @modalBackground;
 	border: solid 1px @borderColor;
 	border-radius: @modalBorderRadius;
-	box-shadow: @modalShadow;
-	
+	box-shadow: @modalShadow;	
 	-webkit-transition:top .2s, height .2s;
 	-ms-transition:top .2s, height .2s;
 	transition:top .2s, height .2s;
+	padding: @modalPadding;
 }
-.modal-scroller{
-	position:absolute;
-	top: @modalPadding;
-	bottom: @modalPadding;
+.modal.with-controls{
+	padding-bottom: 3 * @modalPadding;
+}
+.modal-ctrls{
+	position: absolute;
 	left: @modalPadding;
 	right: @modalPadding;
+	bottom: @modalPadding;
+	text-align: center;
+}
+.modal-scroller{	
 	overflow:auto; 
 }
 .modal-content{
 	position:relative;
+	padding:1px;
+	min-height: 50px;
 }
 .modal-closer{
 	position:absolute;
 	top: 5px;
 	right: 5px;
 	margin:0 !important;
-	/*width: 20px;
-	height: 20px;
-	background-color: #DDD;
-	font: 14px/20px Arial,sans-serif;
-	text-align: center;
-	cursor: pointer*/
 }
 .loading{
-	position: absolute;
-	top:50%;
-	left: 50%;
-	margin:-16px 0 0 -16px;
-	display: block
+	text-align: center;
+	opacity: .6;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.loading.error{	
+	opacity: 1;
+	color: @errorColor;
+}
 
 /* GRID SYSTEM ********************************************/
 .row:before,
@@ -422,7 +407,6 @@ input[type="submit"],
 input[type="button"],
 input[type="reset"],
 input.button,
-button.button,
 button {
 	display: inline-block;
 	padding: @inputPadding @inputPadding2;
@@ -436,13 +420,13 @@ button {
 	overflow: visible;
 	width: auto;	
 	white-space: nowrap;
-	background-color: @foregroundColor;
+	background-color: @buttonColor;
 	border:solid 1px @foregroundColor;
 	-webkit-appearance: none;
 	-webkit-font-smoothing: antialiased;
 	text-shadow: none;
 	box-shadow: none;
-	border-radius: @inputBorderRadius;
+	border-radius: @buttonBorderRadius;
 	-webkit-transition: all .1s;
 	-ms-transition: all .1s;
 	transition: all .1s;
@@ -455,11 +439,10 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input.button:hover,
-button.button:hover,
 button:hover {
 	text-decoration: none;
-	background-color: @foregroundColor * 1.2;
-	border-color:@foregroundColor * 1.2;
+	background-color: @buttonColor * 1.2;
+	border-color:@buttonColor * 1.2;
 	color: @invertColor;
 }
 .button:active,
@@ -468,20 +451,60 @@ input[type="submit"]:active,
 input[type="button"]:active,
 input[type="reset"]:active,
 input.button:active,
-button.button:active,
 button:active {
-	background-color: @foregroundColor * 0.9;
-	border-color:@foregroundColor * 0.9;
+	background-color: @buttonColor * 0.9;
+	border-color:@buttonColor * 0.9;
 	color: @invertColor;
 }
 
+/* button colors*/
+a.button.secondary,.button.secondary,.submit.secondary,input[type="submit"].secondary,input[type="button"].secondary,input[type="reset"].secondary,input.button.secondary,button.secondary {background-color: @buttonSecondaryColor;border-color:@buttonSecondaryColor;}
+.button.secondary:hover,.submit.secondary:hover,input[type="submit"].secondary:hover,input[type="button"].secondary:hover,input[type="reset"].secondary:hover,input.button.secondary:hover,button.secondary:hover {background-color: @buttonSecondaryColor * 1.2;border-color:@buttonSecondaryColor * 1.2;}
+.button.secondary:active,.submit.secondary:active,input[type="submit"].secondary:active,input[type="button"].secondary:active,input[type="reset"].secondary:active,input.button.secondary:active,button.secondary:active {background-color: @buttonSecondaryColor * 0.9;border-color:@buttonSecondaryColor * 0.9;}
+
+a.button.alt,.button.alt,.submit.alt,input[type="submit"].alt,input[type="button"].alt,input[type="reset"].alt,input.button.alt,button.alt {background-color: @buttonAltColor;border-color:@buttonAltColor;}
+.button.alt:hover,.submit.alt:hover,input[type="submit"].alt:hover,input[type="button"].alt:hover,input[type="reset"].alt:hover,input.button.alt:hover,button.alt:hover {background-color: @buttonAltColor * 1.2;border-color:@buttonAltColor * 1.2;}
+.button.alt:active,.submit.alt:active,input[type="submit"].alt:active,input[type="button"].alt:active,input[type="reset"].alt:active,input.button.alt:active,button.alt:active {background-color: @buttonAltColor * 0.9;border-color:@buttonAltColor * 0.9;}
+
+a.button.warning,.button.warning,.submit.warning,input[type="submit"].warning,input[type="button"].warning,input[type="reset"].warning,input.button.warning,button.warning {background-color: @buttonWarningColor;border-color:@buttonWarningColor;}
+.button.warning:hover,.submit.warning:hover,input[type="submit"].warning:hover,input[type="button"].warning:hover,input[type="reset"].warning:hover,input.button.warning:hover,button.warning:hover {background-color: @buttonWarningColor * 1.2;border-color:@buttonWarningColor * 1.2;}
+.button.warning:active,.submit.warning:active,input[type="submit"].warning:active,input[type="button"].warning:active,input[type="reset"].warning:active,input.button.warning:active,button.warning:active {background-color: @buttonWarningColor * 0.9;border-color:@buttonWarningColor * 0.9;}
+
+a.button.danger,.button.danger,.submit.danger,input[type="submit"].danger,input[type="button"].danger,input[type="reset"].danger,input.button.danger,button.danger {background-color: @buttonDangerColor;border-color:@buttonDangerColor;}
+.button.danger:hover,.submit.danger:hover,input[type="submit"].danger:hover,input[type="button"].danger:hover,input[type="reset"].danger:hover,input.button.danger:hover,button.danger:hover {background-color: @buttonDangerColor * 1.4;border-color:@buttonDangerColor * 1.4;}
+.button.danger:active,.submit.danger:active,input[type="submit"].danger:active,input[type="button"].danger:active,input[type="reset"].danger:active,input.button.danger:active,button.danger:active {background-color: @buttonDangerColor * 0.9;border-color:@buttonDangerColor * 0.9;}
+
+a.button.info,.button.info,.submit.info,input[type="submit"].info,input[type="button"].info,input[type="reset"].info,input.button.info,button.info {background-color: @buttonInfoColor;border-color:@buttonInfoColor;}
+.button.info:hover,.submit.info:hover,input[type="submit"].info:hover,input[type="button"].info:hover,input[type="reset"].info:hover,input.button.info:hover,button.info:hover {background-color: @buttonInfoColor * 1.2;border-color:@buttonInfoColor * 1.2;}
+.button.info:active,.submit.info:active,input[type="submit"].info:active,input[type="button"].info:active,input[type="reset"].info:active,input.button.info:active,button.info:active {background-color: @buttonInfoColor * 0.9;border-color:@buttonInfoColor * 0.9;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* button sizes */
 .button.small,
 .submit.small,
 input[type="submit"].small,
 input[type="button"].small,
 input[type="reset"].small,
 input.button.small,
-button.button.small,
 button.small {
 	font-size: 0.8em;
 }
@@ -491,27 +514,22 @@ input[type="submit"].smallest,
 input[type="button"].smallest,
 input[type="reset"].smallest,
 input.button.smallest,
-button.button.smallest,
 button.smallest {
 	font-size: 0.5em;
 	line-height: 1em;
 	padding: 0.5em;
 	font-weight: bold;
 }
-
-
-
+a.button.big,.button.big,.submit.big,input[type="submit"].big,input[type="button"].big,input[type="reset"].big,input.button.big,button.big,a.button.large,.button.large,.submit.large,input[type="submit"].large,input[type="button"].large,input[type="reset"].large,input.button.large,button.large{font-size: 1.387em}
+a.button.biggest,.button.biggest,.submit.biggest,input[type="submit"].biggest,input[type="button"].biggest,input[type="reset"].biggest,input.button.biggest,button.biggest{
+font-size: 2em;
+}
 
 /* radio */
-
 input[type="radio"],
 input[type="checkbox"]{
 	display: none;
 }
-
-
-
-
 input[type="radio"] + label,
 input[type="checkbox"] + label{
 	cursor: pointer;
@@ -607,4 +625,59 @@ input[type="time"]{
 }
 input[type="datetime-local"]{
 	max-width: 17em;
+}
+
+/* tabs */
+.tabs-container{
+	clear: both;
+	margin-bottom: 1.5 * @marginBottom;
+	border-bottom: solid 1px @borderColor;
+}
+.tabs-container .tabs{
+	margin:0;
+	height:@tabHeight + 2px;
+	line-height:@tabHeight;
+	border-bottom: solid 1px @borderColor;
+	display: none;
+}
+.tabs-container .tabs li{
+	display: inline-block;
+	background-color: @backgroundColor2;
+	border: solid 1px @borderColor;
+	border-radius: @tabBorderRadius;
+	box-shadow: @tabShadowInactive;
+	-webkit-transition:background-color .1s
+	;-ms-transition:background-color .1s;
+	transition:background-color .1s;
+}
+.tabs-container .tabs li a{
+	display:block;
+	padding:@tabPadding;
+	text-decoration: none;
+	color: @fontColor;
+	outline: 0;
+}
+.tabs-container .tabs li:hover{
+	background-color: 1.1 * @backgroundColor2;
+}
+.tabs-container .tabs li.active{
+	box-shadow: @tabShadowActive;
+}
+.tabs-container .tabs li.active,
+.tabs-container .tabs li.active:hover{
+	background-color: @backgroundColor;
+	border-bottom:solid 1px @backgroundColor;
+}
+
+.tabs-container .tab-content{
+	padding:1em 0 0;
+	margin-bottom: 1em;
+	display: none;
+}
+.tabs-container .tabs + .tab-content{
+	display: block;
+}
+
+.tabs-container.rendered .tabs{
+	display: block;
 }

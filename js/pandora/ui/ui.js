@@ -42,7 +42,7 @@
 			},
 			pre: function(ctx) {
 				var somePre = false;
-				$(ctx + 'xpre').not('.no-print').each(function() {
+				$(ctx + 'pre').not('.no-print').each(function() {
 					var $this = $(this).addClass('prettyprint');
 					$this.text($this.html());
 					somePre = true;

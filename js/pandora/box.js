@@ -91,6 +91,23 @@ var PANDORA = (function() {
 				return this;
 			};
 			return obs;
+		},
+		load = function(options) {
+			var cfg = $.extend({
+				url: null,
+				parameters: 'async=true',
+				onSuccess: function(data) {},
+				onError: function(data){}
+			}, options);
+
+			if (typeof cfg.url === 'string') {
+				var nexus = (cfg.url.indexOf('?') !== -1) ? '&' : '?';
+				$.ajax({
+					url: cfg.url + nexus + cfg.parameters,
+					success: cfg.onSuccess,
+					error: cfg.onError
+				});
+			}
 		};
 
 	return {
@@ -130,6 +147,7 @@ var PANDORA = (function() {
 		store: store,
 		log: log,
 		observable: observable,
+		load: load,
 		empty: function() {}
 	}
 })();

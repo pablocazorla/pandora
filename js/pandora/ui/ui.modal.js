@@ -24,21 +24,43 @@
 		$modalScroller = null,
 		$modalContent = null,
 		$modalCloser = null,
+		$ctrls = null,
 
 		setPosition = function() {
 			var wh = PANDORA.$window.height(),
-				mh = $modal.outerHeight(),
+				padding = parseInt($modal.css('padding-top')) + parseInt($modal.css('padding-bottom')),
+				mh = $modalContent.height() + padding,
 				dif = parseInt(.5 * (wh - mh)),
-				top = (dif < 10) ? 10 : dif,
-				height = (dif < 10) ? (wh - 20) + 'px' : 'auto';
+				top = dif,
+				height = 'auto',
+				heightScroll = 'auto';
+
+			if (dif < 10) {
+				top = 10;
+				height = (wh - 20) + 'px';
+				heightScroll = (wh - 20 - padding) + 'px';
+			}
+
 			$modal.css({
 				'top': top + 'px',
-				//'height': height,
-				'max-height': (wh - 20) + 'px'
+				'height': height
+					//'max-height': height
 			});
 			$modalScroller.css({
-				'scrollTop': 0
+				'scrollTop': 0,
+				'height': heightScroll
 			});
+		},
+		setControls = function(ct) {
+			var ctrls = ct || null;
+			if (ctrls !== null) {
+				$modal.addClass('with-controls');
+				$ctrls.append(ctrls);
+			} else {
+				$modal.removeClass('with-controls');
+				$ctrls.html('');
+			}
+			return this;
 		},
 		show = function(cont) {
 			if (!showing && !showed) {
@@ -48,6 +70,7 @@
 				if (cnt !== undefined) {
 					$modalContent.html(cnt);
 				}
+				setPosition();
 
 				$toShow.fadeIn(cfg.timeToShow, function() {
 					showing = false;
@@ -75,9 +98,10 @@
 		load = function(url, callback) {
 			var cbk = callback || function() {};
 			show(cfg.contentLoading);
-			$.ajax({
-				url: url + '?async=true',
-				success: function(data) {
+
+			PANDORA.load({
+				url: url,
+				onSuccess: function(data) {
 					$modalContent.html(data);
 					setTimeout(function() {
 						setPosition();
@@ -86,6 +110,10 @@
 					if (typeof cbk === 'function') {
 						cbk();
 					}
+				},
+				onError: function(){
+					$modalContent.find('.loading').addClass('error').html('Sorry, there has been an error loading the content.<br>Please, try again.');
+					setPosition();
 				}
 			});
 			return this;
@@ -107,7 +135,8 @@
 			$modal = $('<div id="modal" class="modal" style="display:none"></div>').appendTo('body');
 			$modalScroller = $('<div id="modal-scroller" class="modal-scroller"></div>').appendTo($modal);
 			$modalContent = $('<div id="modal-content" class="modal-content"></div>').appendTo($modalScroller);
-			$modalCloser = $('<div id="modal-closer" class="button smallest modal-closer">X</div>').appendTo($modal);
+			$modalCloser = $('<div id="modal-closer" class="button secondary smallest modal-closer">X</div>').appendTo($modal);
+			$ctrls = $('<div id="modal-ctrls" class="modal-ctrls"></div>').appendTo($modal);
 
 			$toShow = $modal.add($dimmer);
 
@@ -142,6 +171,7 @@
 			return this;
 		},
 		setContent: setContent,
+		setControls: setControls,
 		show: show,
 		hide: hide,
 		load: load
