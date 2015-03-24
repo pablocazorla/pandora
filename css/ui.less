@@ -78,6 +78,40 @@
 @tabHeight:40px;
 @tabPadding: 0 @inputPadding2;
 
+// Paper
+@paperPadding: 3%;
+@paperUpShadow:0 2px 3px rgba(0,0,0,.2);
+@paperDownShadow: inset 0 1px 3px rgba(0,0,0,.2);
+@paperBorderRadius:5px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -283,6 +317,63 @@ canvas{
 	color: @errorColor;
 }
 
+/* LAYOUT CLASSES */
+.wrap:before,
+.wrap:after{content:"";display:table}
+.wrap:after{clear:both}
+.wrap{
+	zoom:1;
+	min-height: 1px;
+	width:92%;
+	max-width: 1200px;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+.paper{
+	background-color: @backgroundColor;
+	border:solid 1px @borderColor;
+	padding:@paperPadding;
+	margin-bottom: 1.5 *@marginBottom;
+	position: relative;
+}
+.paper.up{
+	box-shadow: @paperUpShadow;
+}
+.paper.down{
+	box-shadow: @paperDownShadow;
+}
+
+.paper.round{
+	border-radius: @paperBorderRadius;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* GRID SYSTEM ********************************************/
 .row:before,
 .row:after{content:"";display:table}
@@ -477,26 +568,23 @@ a.button.danger,.button.danger,.submit.danger,input[type="submit"].danger,input[
 a.button.info,.button.info,.submit.info,input[type="submit"].info,input[type="button"].info,input[type="reset"].info,input.button.info,button.info {background-color: @buttonInfoColor;border-color:@buttonInfoColor;}
 .button.info:hover,.submit.info:hover,input[type="submit"].info:hover,input[type="button"].info:hover,input[type="reset"].info:hover,input.button.info:hover,button.info:hover {background-color: @buttonInfoColor * 1.2;border-color:@buttonInfoColor * 1.2;}
 .button.info:active,.submit.info:active,input[type="submit"].info:active,input[type="button"].info:active,input[type="reset"].info:active,input.button.info:active,button.info:active {background-color: @buttonInfoColor * 0.9;border-color:@buttonInfoColor * 0.9;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+a.button.disabled,
+.button.disabled,
+.submit.disabled,
+input[type="submit"].disabled,
+input[type="button"].disabled,
+input[type="reset"].disabled,
+input.button.disabled,
+button.disabled,
+a.button:disabled,
+.button:disabled,
+.submit:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled,
+input.button:disabled,
+button:disabled
+{opacity: 0.5;filter: alpha(opacity=50);cursor: default;cursor: not-allowed;}
 
 /* button sizes */
 .button.small,
@@ -662,6 +750,9 @@ input[type="datetime-local"]{
 }
 .tabs-container .tabs li.active{
 	box-shadow: @tabShadowActive;
+}
+.tabs-container .tabs li.active a{
+	cursor: default;
 }
 .tabs-container .tabs li.active,
 .tabs-container .tabs li.active:hover{
