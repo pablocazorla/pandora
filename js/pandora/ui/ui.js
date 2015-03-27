@@ -58,6 +58,68 @@
 						prettyPrint();
 					}
 				}
+			},
+			dropdown: function(ctx) {
+				$(ctx + 'select.dropdown').each(function() {
+					var $select = $(this).removeClass('dropdown').hide(),
+						$options = $select.find('option'),
+						$drop = $('<span class="dropdown"></span>'),
+						$a = $('<a href="" class="button"></a>').text($options.filter(':selected').text()).appendTo($drop),
+						$ul = $('<ul></ul>').appendTo($drop),
+						strLi = '';
+					for (var i = 0; i < $options.length; i++) {
+						strLi += '<li><a href="">'+ $options.eq(i).text() +'</a></li>';
+					}
+					$ul.html(strLi);
+					$select.after($drop);
+					if($select.hasClass('to-top')){
+						$drop.addClass('to-top');
+					}
+					if($select.hasClass('to-right')){
+						$drop.addClass('to-right');
+					}
+					$drop[0].dataSelect = $select;
+				});
+
+				$(ctx + '.dropdown').not('.rendered').each(function() {
+					var $this = $(this),
+						$btn = $this.addClass('rendered').find('> .button'),
+						$ul = $this.find('> ul'),
+						duration = 150,
+						opened = false,
+						changing = false;
+
+					$btn.click(function(e) {
+						e.preventDefault();
+						if (!opened && !changing) {
+							changing = true;
+							$ul.fadeIn(duration, function() {
+								opened = true;
+								changing = false;
+							});
+						}
+					});
+					PANDORA.$window.click(function() {
+						if (opened && !changing) {
+							changing = true;
+							$ul.fadeOut(duration, function() {
+								opened = false;
+								changing = false;
+							});
+						}
+					});
+					// For selects
+					if(typeof this.dataSelect !== 'undefined'){
+						var $options = this.dataSelect.find('option');							
+						$ul.find('a').each(function(index){
+							$(this).click(function(e){
+								e.preventDefault();
+								$btn.text($(this).text());
+								$options.eq(index).prop('selected', true);
+							});
+						});
+					}
+				});
 			}
 		},
 		select = function(ctx) {

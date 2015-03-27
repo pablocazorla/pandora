@@ -31,6 +31,10 @@
 					<h6>Header 6</h6>
 				</div>
 				<div class="col-8">
+					<p>
+						<a href="javascript:void(0);">Link</a><br>
+						<a href="javascript:void(0);" class="disabled">Disabled</a>
+					</p>
 					<p>Mauris bibendum id orci nec interdum. Aenean commodo augue semper est dignissim adipiscing. Nulla quis <a href="">fringilla</a> risus, eu cursus nisi. Integer id magna lorem. Nunc pretium ligula in elit semper ornare. Donec scelerisque, risus venenatis vehicula pulvinar, lorem nisl vestibulum dui, vel hendrerit nisl purus eget tortor.</p>
 					<p>
 Curabitur interdum <strong>vestibulum</strong> sapien, a egestas eros placerat in. Etiam gravida augue nec nulla dictum, a volutpat ante accumsan. Nunc eget odio nec ligula gravida dapibus sed vel tellus. Phasellus faucibus ipsum ac suscipit aliquet. Ut a eros <b>faucibus</b>, mollis nulla vitae, convallis massa. Pellentesque orci eros, volutpat a urna eget, imperdiet sagittis magna.</p>
@@ -227,6 +231,29 @@ Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
 <p>
 Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et ornare enim. Nulla sodales, felis vulputate adipiscing fringilla, est mauris pellentesque metus, eu facilisis quam augue et dui. Integer ornare dignissim mauris, vitae ultricies nisi. Mauris nibh mi, pretium vel justo quis, ornare bibendum metus.</p>
 
+<h2>Dropdown</h2>
+Phasellus malesuada massa 
+<span class="dropdown">
+	<a href="" class="button">Options</a>
+	<ul>
+		<li><a href="">Option 1</a></li>
+		<li><a href="">Option 2</a></li>
+		<li><hr></li>
+		<li><a href="">Option 3</a></li>
+	</ul>
+</span>
+magna. Phasellus malesuada massa 
+<span class="dropdown to-top to-right">
+	<a href="" class="button">Options</a>
+	<ul>
+		<li><a href="">Option 1</a></li>
+		<li><a href="">Option 2</a></li>
+		<li><hr></li>
+		<li><a href="">Option 3</a></li>
+	</ul>
+</span>
+magna.
+
 <h2>Modal</h2>
 <p>Show modal <a href="" class="button" id="modal-btn-show">here</a></p>
 <p>Load modal <a href="" class="button" id="modal-btn-load">here</a></p>
@@ -237,6 +264,7 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 	<h3>Colors</h3>
 	<p>Common button <a href="javascript:void(0);" class="button">Button</a></p>
 	<p>Secondary button <a href="javascript:void(0);" class="button secondary">Button</a></p>
+	<p>Normal button <a href="javascript:void(0);" class="button normal">Button</a></p>
 	<p>Alt button <a href="javascript:void(0);" class="button alt">Button</a></p>
 	<p>Warning button <a href="javascript:void(0);" class="button warning">Button</a></p>
 	<p>Danger button <a href="javascript:void(0);" class="button danger">Button</a></p>
@@ -253,6 +281,92 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 	<p>Biggest <a href="javascript:void(0);" class="button biggest">Button</a></p>
 </div>
 </div>
+<h3>Button Groups</h3>
+<div>
+	<div class="button-group">
+		<a href="javascript:void(0);" class="button">Button1</a>
+		<a href="javascript:void(0);" class="button info">Button2</a>
+		<a href="javascript:void(0);" class="button">Button3</a>
+		<a href="javascript:void(0);" class="button">Button4</a>
+	</div>
+	<p></p>
+	<div class="button-group">
+		<span class="dropdown">
+			<a href="" class="button">Options1</a>
+			<ul>
+				<li><a href="">Option 1</a></li>
+				<li><a href="">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="">Option 3</a></li>
+			</ul>
+		</span>
+		<a href="javascript:void(0);" class="button">Button1</a>
+		<a href="javascript:void(0);" class="button warning">Button2</a>
+		<span class="dropdown">
+			<a href="" class="button">Options2</a>
+			<ul>
+				<li><a href="javascript:void(0);">Option 1</a></li>
+				<li><a href="javascript:void(0);">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="javascript:void(0);">Option 3</a></li>
+				<li><a href="javascript:void(0);" class="disabled">Disabled</a></li>
+			</ul>
+		</span>	
+		<a href="javascript:void(0);" class="button">Button3</a>
+		<a href="javascript:void(0);" class="button">Button4</a>
+		<span class="dropdown to-top">
+			<a href="" class="button">Options3</a>
+			<ul>
+				<li><a href="javascript:void(0);">Option 1</a></li>
+				<li><a href="javascript:void(0);">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="javascript:void(0);">Option 3</a></li>
+			</ul>
+		</span>
+	</div>
+	<p></p>
+	<div class="button-group">
+		<span class="dropdown">
+			<a href="" class="button normal">Options1</a>
+			<ul>
+				<li><a href="">Option 1</a></li>
+				<li><a href="">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="">Option 3</a></li>
+			</ul>
+		</span>
+		<a href="javascript:void(0);" class="button normal">Button1</a>
+		<a href="javascript:void(0);" class="button normal">Button2</a>
+		<span class="dropdown">
+			<a href="" class="button normal">Options2</a>
+			<ul>
+				<li><a href="javascript:void(0);">Option 1</a></li>
+				<li><a href="javascript:void(0);">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="javascript:void(0);">Option 3</a></li>
+				<li><a href="javascript:void(0);" class="disabled">Disabled</a></li>
+			</ul>
+		</span>	
+		<a href="javascript:void(0);" class="button normal">Button3</a>
+		<a href="javascript:void(0);" class="button normal">Button4</a>
+		<span class="dropdown to-top">
+			<a href="" class="button normal">Options3</a>
+			<ul>
+				<li><a href="javascript:void(0);">Option 1</a></li>
+				<li><a href="javascript:void(0);">Option 2</a></li>
+				<li><hr></li>
+				<li><a href="javascript:void(0);">Option 3</a></li>
+			</ul>
+		</span>	
+	</div>
+	<p></p>
+	<p></p>
+</div>
+
+	<p>
+Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et ornare enim. Nulla sodales, felis vulputate adipiscing fringilla, est mauris pellentesque metus, eu facilisis quam augue et dui. </p>
+
+
 
 
 			<hr>
@@ -299,6 +413,20 @@ Phasellus malesuada massa magna, vel tristique nibh bibendum id. Praesent et orn
 					</div>
 					<p>
 						<select>
+							<option value="-1">Select some option</option>
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+							<option value="3">Option 3</option>
+							<option value="4">Option 4</option>
+							<option value="5">Option 5</option>
+							<option value="6">Option 6</option>
+						</select>
+
+					</p>
+					<h4>Select Dropdown</h4>
+					<p>
+						<select class="dropdown">
+							<option value="-1">Select some option</option>
 							<option value="1">Option 1</option>
 							<option value="2">Option 2</option>
 							<option value="3">Option 3</option>
